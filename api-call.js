@@ -2,13 +2,13 @@ const axios = require('axios')
 const { v4: uuidv4 } = require('uuid')
 const fs = require('fs')
 
-const nuevoUsuario = async () => {
+const nuevoRoommate = async () => {
     try {
         const {data} = await axios.get('http://randomuser.me./api')
-        const usuario = data.results[0]
+        const roommate = data.results[0]
         const user = {
             id: uuidv4().slice(30),
-            nombre: `${usuario.name.title} ${usuario.name.first} ${usuario.name.last}`,
+            nombre: `${roommate.name.title} ${roommate.name.first} ${roommate.name.last}`,
         }
         return user
     } catch(e) {
@@ -16,13 +16,20 @@ const nuevoUsuario = async () => {
     }
 }
 
-const guardarUsuario = (usuario) => {
-    const usuariosJSON = JSON.parse(fs.readFileSync('usuarios.json', 'utf8'))
-    usuariosJSON.usuarios.push(usuario)
-    fs.writeFileSync('usuarios.json', JSON.stringify(usuariosJSON))
+const guardarRoommate = (roommate) => {
+    const roommatesJSON = JSON.parse(fs.readFileSync('roommates.json', 'utf8'))
+    roommatesJSON.usuarios.push(roommate)
+    fs.writeFileSync('roommates.json', JSON.stringify(roommatesJSON))
+}
+
+const getGastos = () => {
+    const preData = fs.readFileSync('gastos.json', 'utf8')
+    const preDataJSON = JSON.parse(preData)
+    return preDataJSON
 }
 
 module.exports = {
-    nuevoUsuario,
-    guardarUsuario
+    nuevoRoommate,
+    getGastos,
+    guardarRoommate
 }
