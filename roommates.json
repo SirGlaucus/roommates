@@ -1,1 +1,16 @@
-{"usuarios":[{"id":"acc2ba","nombre":"Mr Ralph Craig"},{"id":"d67cc7","nombre":"Mr Cristian Gutierrez"},{"id":"5fe22d","nombre":"Mr Valdemar Rasmussen"},{"id":"1daaef","nombre":"Mr Hasan Lauvrak"},{"id":"1b2d26","nombre":"Miss Zara Li"}]}
+{
+    "roommates": [
+        {
+            "id": "acc2ba",
+            "nombre": "Mr Ralph Craig",
+            "debe": 0,
+            "recibe": 0
+        },
+        {
+            "id": "a5d915",
+            "nombre": "Ms Alicia James",
+            "debe": 0,
+            "recibe": 0
+        }
+    ]
+}

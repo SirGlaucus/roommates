@@ -114,7 +114,9 @@ Articulos de limpieza</textarea>
     const getRoommates = async () => {
       const res = await fetch("http://localhost:3000/roommates");
       const data = await res.json();
+      console.log(data)
       roommates = data.roommates;
+      console.log(roommates)
     };
     const getGastos = async () => {
       const res = await fetch("http://localhost:3000/gastos");
@@ -123,9 +125,12 @@ Articulos de limpieza</textarea>
     };
 
     const imprimir = async () => {
+      
+      console.log(roommates)
       try {
         await getRoommates();
         await getGastos();
+        console.log(roommates)
         $("#roommates").html("");
         $("#roommatesSelect").html("");
         $("#roommatesSelectModal").html("");
@@ -218,6 +223,9 @@ Articulos de limpieza</textarea>
     };
 
     imprimir();
+    console.log('Prueba 1')
+    
+    console.log(roommates)
   </script>
 
   <style>

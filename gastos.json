@@ -1,0 +1,9 @@
+{
+    "gastos": [
+        {
+            "roommate": "Mr Ralph Craig",
+            "descripcion": "Probando",
+            "monto": 30000
+        }
+    ]
+}

@@ -9,8 +9,8 @@ const nuevoRoommate = async () => {
         const user = {
             id: uuidv4().slice(30),
             nombre: `${roommate.name.title} ${roommate.name.first} ${roommate.name.last}`,
-            debe,
-            recibe
+            debe: 0,
+            recibe: 0
         }
         return user
     } catch(e) {
@@ -18,9 +18,9 @@ const nuevoRoommate = async () => {
     }
 }
 
-const guardarRoommate = (roommate) => {
+const guardarRoommate = (newRoommate) => {
     const roommatesJSON = JSON.parse(fs.readFileSync('roommates.json', 'utf8'))
-    roommatesJSON.usuarios.push(roommate)
+    roommatesJSON.roommates.push(newRoommate)
     fs.writeFileSync('roommates.json', JSON.stringify(roommatesJSON))
 }
 

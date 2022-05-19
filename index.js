@@ -13,6 +13,11 @@ const getHome = (req, res) => {
     res.end(fs.readFileSync('index.html', 'utf8'))
 }
 
+const getRoommate = (req, res) => {
+    res.setHeader('Content-Type', 'application/json')
+    res.end(fs.readFileSync('roommates.json', 'utf8'))
+}
+
 const postRoomate = (req, res) => {
     nuevoRoommate().then(async (roommate) => {
         guardarRoommate(roommate)
@@ -24,6 +29,10 @@ const postRoomate = (req, res) => {
     })
 }
 
+const getGastos = (req, res) => {
+    res.setHeader('Content-Type', 'application/json')
+    res.end(fs.readFileSync('gastos.json', 'utf8'))
+}
 
 // ------------------------------------ 
 http.createServer((req, res) => {
@@ -33,14 +42,16 @@ http.createServer((req, res) => {
         getHome(req, res)
     }
 
+    if (req.url.startsWith('/roommate') && req.method === 'GET') {
+        getRoommate(req, res)
+    }
+
     if (req.url.startsWith('/roommate') && req.method === 'POST') {
         postRoomate(req, res)
     }
 
-    if (req.url.startsWith('/roommate') && req.method === 'GET') {
-        res.setHeader('Content-Type', 'application/json')
-        res.end(fs.readFileSync('roommates.json', 'utf8'))
+    if (req.url.startsWith('/gastos') && req.method === 'GET') {
+        getGastos(req, res)
     }
-
 
 }).listen(3000, console.log('Server ON en el puerto 3000'))
