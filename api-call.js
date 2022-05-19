@@ -9,6 +9,8 @@ const nuevoRoommate = async () => {
         const user = {
             id: uuidv4().slice(30),
             nombre: `${roommate.name.title} ${roommate.name.first} ${roommate.name.last}`,
+            debe,
+            recibe
         }
         return user
     } catch(e) {
@@ -22,14 +24,11 @@ const guardarRoommate = (roommate) => {
     fs.writeFileSync('roommates.json', JSON.stringify(roommatesJSON))
 }
 
-const getGastos = () => {
-    const preData = fs.readFileSync('gastos.json', 'utf8')
-    const preDataJSON = JSON.parse(preData)
-    return preDataJSON
-}
+// agregarGasto
+
+// updateGasto()
 
 module.exports = {
     nuevoRoommate,
-    getGastos,
     guardarRoommate
 }
