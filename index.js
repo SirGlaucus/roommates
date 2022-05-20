@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid')
 
 const {
     nuevoRoommate,
-    guardarRoommate} = require('./api-call')
+    guardarRoommate } = require('./api-call')
 
 // ------------------------------------ 
 const applog = (req, res) => {
@@ -60,8 +60,7 @@ const postGastos = (req, res) => {
 }
 
 const putGastos = (req, res) => {
-    const { id} = url.parse(req.url, true).query
-    console.log(id)
+    const { id } = url.parse(req.url, true).query // Saca el ID del QueryString para poder realizar la comparacion
     let body = ''
     req.on('data', (chunk) => {
         body = chunk.toString()
@@ -86,6 +85,24 @@ const putGastos = (req, res) => {
             }
             res.end('Premio editado con exito!')
         })
+    })
+}
+
+const deleteGastos = (req, res) => {
+    const { id } = url.parse(req.url, true).query
+
+    const gastosJSON = JSON.parse(fs.readFileSync('gastos.json', 'utf8'))
+    console.log(gastosJSON.gastos)
+    console.log('----------------------------------------------------------------------------')
+    gastosJSON.gastos = gastosJSON.gastos.filter(data => data.id !== id)
+    console.log(gastosJSON.gastos)
+    fs.writeFile('gastos.json', JSON.stringify(gastosJSON), (err) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('Funcionando')
+        }
+        res.end('Eliminado con exito!')
     })
 }
 
@@ -118,7 +135,7 @@ http.createServer((req, res) => {
     }
 
     if (req.url.startsWith('/gasto') && req.method === 'DELETE') {
-        
-    } 
+        deleteGastos(req, res)
+    }
 
 }).listen(3000, console.log('Server ON en el puerto 3000'))
