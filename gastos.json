@@ -1,1 +1,10 @@
-{"gastos":[{"roommate":"Mr Jetro Farias","descripcion":"Articulos de limpieza","monto":50000,"id":"4bb3ef"},{"roommate":"Ms Kate Gibson","descripcion":"Articulos de limpieza","monto":20000,"id":"42089b"}]}
+{
+    "gastos": [
+        {
+            "roommate": "Mr Jetro Farias",
+            "descripcion": "Articulos de limpieza",
+            "monto": 50000,
+            "id": "4bb3ef"
+        }
+    ]
+}
