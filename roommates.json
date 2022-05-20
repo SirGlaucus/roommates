@@ -1,1 +1,1 @@
-{"roommates":[{"id":"acc2ba","nombre":"Mr Ralph Craig","debe":3333,"recibe":0},{"id":"a5d915","nombre":"Ms Alicia James","debe":0,"recibe":0},{"id":"2aa3f0","nombre":"Mrs Konstanse Vinje","debe":0,"recibe":0},{"id":"6bb32f","nombre":"Mr Lauri Jokinen","debe":0,"recibe":0}]}
+{"roommates":[{"id":"acc2ba","nombre":"Mr Ralph Craig","debe":-11250,"recibe":0},{"id":"a5d915","nombre":"Ms Alicia James","debe":-11250,"recibe":1125},{"id":"2aa3f0","nombre":"Mrs Konstanse Vinje","debe":-11250,"recibe":0},{"id":"6bb32f","nombre":"Mr Lauri Jokinen","debe":-375,"recibe":33750}]}

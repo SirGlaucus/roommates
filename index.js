@@ -1,5 +1,4 @@
 const http = require('http')
-const fs = require('fs')
 
 const {
     getHome,
@@ -11,25 +10,14 @@ const {
     deleteGastos
 } = require('./restmethod')
 
-// ------------------------------------ 
-const applog = (req, res) => {
-    console.log('->', req.url, req.method)
-}
-
-const actualizarDeuda = () => {
-    const gastosJSON = JSON.parse(fs.readFileSync('gastos.json', 'utf8'))
-    const roommatesJSON = JSON.parse(fs.readFileSync('roommates.json', 'utf8'))
-    console.log(gastosJSON.gastos)
-    console.log(roommatesJSON)
-}
+const updateDebt = require('./updateDebt')
 
 // ------------------------------------ 
 http.createServer((req, res) => {
-    applog(req, res)
-
+    
     if (req.url == '/' && req.method === 'GET') {
         getHome(req, res)
-        actualizarDeuda()
+        updateDebt()
     }
 
     if (req.url.startsWith('/roommate') && req.method === 'GET') {

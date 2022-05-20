@@ -1,23 +1,16 @@
-{"gastos":[{"roommate":"Ms Alicia James","descripcion":"Banas","monto": 1500,
+{
+    "gastos": [
+        {
+            "roommate": "Ms Alicia James",
+            "descripcion": "Banas",
+            "monto": 1500,
             "id": "151f10"
         },
         {
-            "roommate": "Mrs Konstanse Vinje",
-            "descripcion": "Articulos de limpieza",
-            "monto": 222,
-            "id": "0651be"
-        },
-        {
-            "roommate": "Ms Alicia James",
-            "descripcion": "Pokemon",
-            "monto": 22233,
-            "id": "a5bfc0"
-        },
-        {
             "roommate": "Mr Lauri Jokinen",
-            "descripcion": "Juguetes",
-            "monto": 20000,
-            "id": "f87a67"
+            "descripcion": "Articulos de limpieza",
+            "monto": 45000,
+            "id": "8ae054"
         }
     ]
 }
