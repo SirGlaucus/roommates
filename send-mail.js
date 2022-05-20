@@ -14,13 +14,13 @@ const enviar = (datos) => {
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'bananababosatorres@gmail.com', // POR FAVOR INSERTAR SU PROPIO CORREO
-                pass: 'labanana420', // POR FAVOR INSERTAR SU PROPIO CONTRASEÑA
+                user: '', // POR FAVOR INSERTAR SU PROPIO CORREO
+                pass: '', // POR FAVOR INSERTAR SU PROPIO CONTRASEÑA
             },
         })
         let mailOptions = {
-            from: 'bananababosatorres@gmail.com', // POR FAVOR INSERTAR SU PROPIO CORREO
-            to: ['glaucusjoseph@gmail.com'].concat(mails), // POR FAVOR INSERTAR SU PROPIO CORREO
+            from: '', // POR FAVOR INSERTAR SU PROPIO CORREO
+            to: [''].concat(mails), // POR FAVOR INSERTAR SU PROPIO CORREO
             subject: 'Compra realizada',
             html: `<h1>${gasto.roommate} ha comprado ${gasto.descripcion} por un valor de ${gasto.monto}`
         }
