@@ -2,6 +2,8 @@ const axios = require('axios')
 const { v4: uuidv4 } = require('uuid')
 const fs = require('fs')
 
+const updateDebt = require('./updateDebt')
+
 
 const nuevoRoommate = async () => {
     try {
@@ -23,6 +25,7 @@ const guardarRoommate = (newRoommate) => {
     const roommatesJSON = JSON.parse(fs.readFileSync('roommates.json', 'utf8'))
     roommatesJSON.roommates.push(newRoommate)
     fs.writeFileSync('roommates.json', JSON.stringify(roommatesJSON))
+    updateDebt()
 }
 
 

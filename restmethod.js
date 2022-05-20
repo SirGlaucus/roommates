@@ -6,6 +6,8 @@ const {
     nuevoRoommate,
     guardarRoommate } = require('./api-call')
 
+const updateDebt = require('./updateDebt')
+
 const getHome = (req, res) => {
     res.setHeader('Content-Type', 'text/html')
     res.end(fs.readFileSync('index.html', 'utf8'))
@@ -46,6 +48,7 @@ const postGastos = (req, res) => {
             if (err) {
                 console.log(err)
             } else {
+                updateDebt()
                 console.log('Funcionando')
             }
             res.end('Premio editado con exito!')
@@ -75,6 +78,7 @@ const putGastos = (req, res) => {
             if (err) {
                 console.log(err)
             } else {
+                updateDebt()
                 console.log('Funcionando')
             }
             res.end('Premio editado con exito!')
@@ -94,6 +98,7 @@ const deleteGastos = (req, res) => {
         if (err) {
             console.log(err)
         } else {
+            updateDebt()
             console.log('Funcionando')
         }
         res.end('Eliminado con exito!')

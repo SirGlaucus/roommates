@@ -8,16 +8,28 @@ const updateDebt = () => {
     const roommatesArray = roommatesJSON.roommates
     const cantidadRoommates = roommatesArray.length
 
-    gastosDivir.forEach((gasto) => {
-        const montoDividido = gasto.monto / cantidadRoommates
-        roommatesArray.forEach((roomie) => {
-            if (roomie.nombre === gasto.roommate) {
-                roomie.recibe =+ gasto.monto - montoDividido
-            } else{
-                roomie.debe =- montoDividido
-            }
+    if (gastosDivir.length === 0) {
+        roommatesArray.forEach((e) => {
+            e.recibe = 0
+            e.debe = 0
         })
-    })
+    } else {
+        roommatesArray.forEach((e) => {
+            e.recibe = 0
+            e.debe = 0
+        })
+        gastosDivir.forEach((gasto) => {
+            const montoDividido = gasto.monto / cantidadRoommates
+
+            roommatesArray.forEach((roomie) => {
+                if (roomie.nombre === gasto.roommate) {
+                    roomie.recibe += gasto.monto - montoDividido
+                } else {
+                    roomie.debe -= montoDividido
+                }
+            })
+        })
+    }
 
     roommatesJSON.roommates = roommatesArray
 
