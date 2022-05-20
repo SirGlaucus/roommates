@@ -1,7 +1,9 @@
 const http = require('http')
 const fs = require('fs')
 
-const { nuevoRoommate, guardarRoommate } = require('./api-call')
+const {
+    nuevoRoommate,
+    guardarRoommate} = require('./api-call')
 
 // ------------------------------------ 
 const applog = (req, res) => {
@@ -34,6 +36,26 @@ const getGastos = (req, res) => {
     res.end(fs.readFileSync('gastos.json', 'utf8'))
 }
 
+const postGastos = (req, res) => {
+    let body = ''
+    req.on('data', (chunk) => {
+        body = chunk.toString()
+    })
+    req.on('end', () => {
+        const nuevoGasto = JSON.parse(body)
+        const gastosJSON = JSON.parse(fs.readFileSync('gastos.json', 'utf8'))
+        gastosJSON.gastos.push(nuevoGasto)
+        fs.writeFile('gastos.json', JSON.stringify(gastosJSON), (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log('Funcionando')
+            }
+            res.end('Premio editado con exito!')
+        })
+    })
+}
+
 // ------------------------------------ 
 http.createServer((req, res) => {
     applog(req, res)
@@ -52,6 +74,14 @@ http.createServer((req, res) => {
 
     if (req.url.startsWith('/gastos') && req.method === 'GET') {
         getGastos(req, res)
+    }
+
+    if (req.url.startsWith('/gasto') && req.method === 'POST') {
+        postGastos(req, res)
+    }
+
+    if (req.url.startsWith('/gasto') && req.method === 'PUT') {
+        
     }
 
 }).listen(3000, console.log('Server ON en el puerto 3000'))

@@ -2,6 +2,7 @@ const axios = require('axios')
 const { v4: uuidv4 } = require('uuid')
 const fs = require('fs')
 
+
 const nuevoRoommate = async () => {
     try {
         const {data} = await axios.get('http://randomuser.me./api')
@@ -24,11 +25,9 @@ const guardarRoommate = (newRoommate) => {
     fs.writeFileSync('roommates.json', JSON.stringify(roommatesJSON))
 }
 
-// agregarGasto
 
-// updateGasto()
 
 module.exports = {
     nuevoRoommate,
-    guardarRoommate
+    guardarRoommate,
 }
