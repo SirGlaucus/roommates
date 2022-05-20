@@ -8,6 +8,8 @@ const {
 
 const updateDebt = require('./updateDebt')
 
+const enviar = require('./send-mail')
+
 const getHome = (req, res) => {
     res.setHeader('Content-Type', 'text/html')
     res.end(fs.readFileSync('index.html', 'utf8'))
@@ -49,7 +51,7 @@ const postGastos = (req, res) => {
                 console.log(err)
             } else {
                 updateDebt()
-                console.log('Funcionando')
+                
             }
             res.end('Premio editado con exito!')
         })
