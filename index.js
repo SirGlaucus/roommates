@@ -1,5 +1,7 @@
 const http = require('http')
 const fs = require('fs')
+const url = require("url");
+const { v4: uuidv4 } = require('uuid')
 
 const {
     nuevoRoommate,
@@ -43,8 +45,39 @@ const postGastos = (req, res) => {
     })
     req.on('end', () => {
         const nuevoGasto = JSON.parse(body)
+        nuevoGasto.id = uuidv4().slice(30)
         const gastosJSON = JSON.parse(fs.readFileSync('gastos.json', 'utf8'))
         gastosJSON.gastos.push(nuevoGasto)
+        fs.writeFile('gastos.json', JSON.stringify(gastosJSON), (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log('Funcionando')
+            }
+            res.end('Premio editado con exito!')
+        })
+    })
+}
+
+const putGastos = (req, res) => {
+    const { id} = url.parse(req.url, true).query
+    console.log(id)
+    let body = ''
+    req.on('data', (chunk) => {
+        body = chunk.toString()
+    })
+
+    req.on('end', () => {
+        const nuevoGasto = JSON.parse(body)
+        const gastosJSON = JSON.parse(fs.readFileSync('gastos.json', 'utf8'))
+        gastosJSON.gastos.forEach((viejoGasto) => {
+            if (viejoGasto.id === id) {
+                viejoGasto.roommate = nuevoGasto.roommate
+                viejoGasto.descripcion = nuevoGasto.descripcion
+                viejoGasto.monto = nuevoGasto.monto
+            }
+        })
+
         fs.writeFile('gastos.json', JSON.stringify(gastosJSON), (err) => {
             if (err) {
                 console.log(err)
@@ -81,7 +114,11 @@ http.createServer((req, res) => {
     }
 
     if (req.url.startsWith('/gasto') && req.method === 'PUT') {
-        
+        putGastos(req, res)
     }
+
+    if (req.url.startsWith('/gasto') && req.method === 'DELETE') {
+        
+    } 
 
 }).listen(3000, console.log('Server ON en el puerto 3000'))
