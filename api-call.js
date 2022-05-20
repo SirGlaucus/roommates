@@ -12,6 +12,7 @@ const nuevoRoommate = async () => {
         const user = {
             id: uuidv4().slice(30),
             nombre: `${roommate.name.title} ${roommate.name.first} ${roommate.name.last}`,
+            correo: roommate.email,
             debe: 0,
             recibe: 0
         }

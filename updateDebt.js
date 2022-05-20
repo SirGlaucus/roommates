@@ -24,8 +24,10 @@ const updateDebt = () => {
             roommatesArray.forEach((roomie) => {
                 if (roomie.nombre === gasto.roommate) {
                     roomie.recibe += gasto.monto - montoDividido
+                    roomie.recibe = (roomie.recibe).toFixed(2)
                 } else {
                     roomie.debe -= montoDividido
+                    roomie.debe = (roomie.debe).toFixed(2)
                 }
             })
         })

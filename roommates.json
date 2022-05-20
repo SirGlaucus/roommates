@@ -1,1 +1,25 @@
-{"roommates":[{"id":"acc2ba","nombre":"Mr Ralph Craig","debe":-12500,"recibe":15000},{"id":"a5d915","nombre":"Ms Alicia James","debe":-5000,"recibe":37500},{"id":"2aa3f0","nombre":"Mrs Konstanse Vinje","debe":-17500,"recibe":0},{"id":"a1275e","nombre":"Ms Vildan Arıcan","debe":-17500,"recibe":0}]}
+{
+    "roommates": [
+        {
+            "id": "d95831",
+            "nombre": "Ms Kate Gibson",
+            "correo": "kate.gibson@example.com",
+            "debe": -16666.67,
+            "recibe": 13333.33
+        },
+        {
+            "id": "d1fd87",
+            "nombre": "Mr Jetro Farias",
+            "correo": "jetro.farias@example.com",
+            "debe": -6666.67,
+            "recibe": 33333.33
+        },
+        {
+            "id": "c8a972",
+            "nombre": "Mr Mikkel Nielsen",
+            "correo": "mikkel.nielsen@example.com",
+            "debe": -23333.339999999997,
+            "recibe": 0
+        }
+    ]
+}
